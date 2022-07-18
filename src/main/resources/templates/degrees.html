@@ -9,7 +9,7 @@
   <!-- riferimento al thblock collegamento alla nav bar in fragments -->
   <th:block th:replace="fragments :: navbar"></th:block>
   <!-- th if se la lista dei departments è vuota non stampi la tabella -->
-  <div th:if="${#lists.isEmpty(DepartmentsList)}">
+  <div th:if="${#lists.isEmpty(Degrees)}">
 	  	<h1>Lista non disponibile, riprovare più tardi</h1>
 	  </div>
   <div class="container">
@@ -19,23 +19,20 @@
 	          <thead>
 	            <tr>
 	              <th>Nome</th>
-	              <th>Indirizzo</th>
-	              <th>Telefono</th>
+	              <th>livello</th>
+	              <th>indirizzo</th>
 	              <th>Indirizzo mail</th>
 	              <th>Sito web</th>
-	              <th>Capodipartimento</th>
-	            </tr>
+	              </tr>
 	          </thead>
 	          <tbody>
-	            <tr class="align-middle" th:each="dep : ${DepartmentsList}">
+	            <tr class="align-middle" th:each="dep : ${Degrees}">
 	              <td th:text="${dep.name}"></td>
-	              
+	              <td th:text="${dep.level}"></td>
 	              <td th:text="${dep.address}"></td>
-	              <td th:text="${dep.phone}"></td>
 	              <td th:text="${dep.email}"></td>
 	              <td th:text="${dep.website}"></td>
-	              <td th:text="${dep.headOfDepartment}"></td>
-	            </tr>
+	              </tr>
 	          </tbody>
 	        </table>
   </div>
