@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <th:block th:replace="fragments :: scr-head"></th:block>
+    <title>Sito Università</title>
+  </head>
+  <body>
+ 
+  <th:block th:replace="fragments :: navbar"></th:block>
+  
+  <div th:if="${#lists.isEmpty(DepartmentsList)}">
+	  	<h1>Lista non disponibile, riprovare più tardi</h1>
+	  </div>
+  <div class="container">
+    <h1>Dettagli Dipartimento</h1>
+    
+	<table class="table my-3">
+	          <thead>
+	            <tr>
+	              <th>Nome</th>
+	              <th>Indirizzo</th>
+	              <th>Telefono</th>
+	              <th>Indirizzo mail</th>
+	              <th>Sito web</th>
+	              <th>Capodipartimento</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	            <tr class="align-middle">
+	              <td th:text="${departments.name}"></td>	              
+	              <td th:text="${departments.address}"></td>
+	              <td th:text="${departments.phone}"></td>
+	              <td th:text="${departments.email}"></td>
+	              <td th:text="${departments.website}"></td>
+	              <td th:text="${departments.headOfDepartment}"></td>
+	            </tr>
+	          </tbody>
+	        </table>
+	        <table class="table my-3">
+	         <thead>
+	           
+	          <tr class="align-middle">
+	           <th>Nome</th>
+	          </tr>          
+	         </thead>
+	           
+	          <tbody>
+	            <tr class="align-middle" th:each="degree:${departments.getDegree()}">
+	             <td th:text="${degree.getName()}"></td> 
+	            </tr>
+	          </tbody>
+	        </table>
+	        
+  </div>
+  </body>
+</html>

@@ -28,6 +28,7 @@
 	          <tbody>
 	            <tr class="align-middle" th:each="dep : ${Degrees}">
 	              <td th:text="${dep.name}"></td>
+	              <td><a> th:href = "@" </a></td>
 	              <td th:text="${dep.level}"></td>
 	              <td th:text="${dep.address}"></td>
 	              <td th:text="${dep.email}"></td>

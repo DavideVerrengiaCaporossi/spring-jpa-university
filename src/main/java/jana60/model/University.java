@@ -1,9 +1,13 @@
 package jana60.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //Inizializzazione della tabella
@@ -28,8 +32,19 @@ public class University {
 	private String website;
 	
 	private String headOfDepartment;
+	@OneToMany
+	@JoinColumn(name = "department_id")
+	private List<Degrees> degree;
 	
 	//Getters and Setters variabili
+
+	public List<Degrees> getDegree() {
+		return degree;
+	}
+
+	public void setDegree(List<Degrees> degree) {
+		this.degree = degree;
+	}
 
 	public Integer getId() {
 		return id;

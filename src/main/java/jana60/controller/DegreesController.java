@@ -25,4 +25,5 @@ public class DegreesController {
 		model.addAttribute("Degrees" ,DegreesList);
 		return "degrees";
 	}
+	
 }

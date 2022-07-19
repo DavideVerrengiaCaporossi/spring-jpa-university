@@ -1,11 +1,13 @@
 package jana60.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jana60.model.University;
@@ -27,6 +29,13 @@ public class UniversityController {
 			return "home";
 		}
 		
-		
+		@GetMapping ("/dipartimento/{id}")
+		public String dipartimento (@PathVariable(name = "id")Integer id, Model model ) {
+			Optional<University> department = repo.findById (id);
+			if (department.isPresent()) {
+				model.addAttribute("departments", department.get());
+			}
+			return "departmentsDetail";
+		}
 		
 	}
