@@ -3,34 +3,33 @@
   <head>
    <!-- riferimento th block collegamento ai meta etc -->
     <th:block th:replace="fragments :: scr-head"></th:block>
-    <title>Sito Università</title>
+    <title>Dettagli insegnanti</title>
   </head>
   <body>
   <!-- riferimento al thblock collegamento alla nav bar in fragments -->
   <th:block th:replace="fragments :: navbar"></th:block>
-  <!-- th if se la lista dei departments è vuota non stampi la tabella -->
-  <div th:if="${#lists.isEmpty(Degrees)}">
-	  	<h1>Lista non disponibile, riprovare più tardi</h1>
-	  </div>
+  
   <div class="container">
-    <h1>Ciao ecco i dipartimenti delle nostre università</h1>
+    <h1 th:text="${teachers.getName()}"></h1>
     <!-- creazione tabella -->
 	<table class="table my-3">
 	          <thead>
 	            <tr>
 	              <th>Nome</th>
-	              <th>livello</th>
-	              <th>indirizzo</th>
-	              <th>Indirizzo mail</th>
+	              <th>descrizione</th>
+	              <th>periodo</th>
+	              <th>anno</th>
+	              <th>cfu</th>
 	              <th>Sito web</th>
-	              </tr>
+	             </tr>
 	          </thead>
 	          <tbody>
-	            <tr class="align-middle" th:each="dep : ${Degrees}">
+	            <tr class="align-middle" th:each="dep : ${teachers.getCourses()}">
 	              <td th:text="${dep.name}"></td>
-	              <td th:text="${dep.level}"></td>
-	              <td th:text="${dep.address}"></td>
-	              <td th:text="${dep.email}"></td>
+	              <td th:text="${dep.description}"></td>
+	              <td th:text="${dep.period}"></td>
+	              <td th:text="${dep.year}"></td>
+	              <td th:text="${dep.cfu}"></td>
 	              <td th:text="${dep.website}"></td>
 	              </tr>
 	          </tbody>

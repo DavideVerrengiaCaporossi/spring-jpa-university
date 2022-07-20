@@ -3,7 +3,7 @@
   <head>
    <!-- riferimento th block collegamento ai meta etc -->
     <th:block th:replace="fragments :: scr-head"></th:block>
-    <title>Sito Università</title>
+    <title>Dettagli insegnanti</title>
   </head>
   <body>
   <!-- riferimento al thblock collegamento alla nav bar in fragments -->
@@ -19,19 +19,23 @@
 	          <thead>
 	            <tr>
 	              <th>Nome</th>
-	              <th>livello</th>
-	              <th>indirizzo</th>
-	              <th>Indirizzo mail</th>
-	              <th>Sito web</th>
-	              </tr>
+	              <th>Cognome</th>
+	              <th>Telefono</th>
+	              <th>email</th>
+	              <th>indirizzoUffico</th>
+	              <th>numeroUfficio</th>
+	             </tr>
 	          </thead>
 	          <tbody>
-	            <tr class="align-middle" th:each="dep : ${Degrees}">
-	              <td th:text="${dep.name}"></td>
-	              <td th:text="${dep.level}"></td>
-	              <td th:text="${dep.address}"></td>
+	            <tr class="align-middle" th:each="dep : ${Teacherslist}">
+	              <td>
+	              <a th:href = "@{|/teachers/${dep.id}|}" th:text="${dep.name}" ></a>
+	              </td>
+	              <td th:text="${dep.surname}"></td>
+	              <td th:text="${dep.phone}"></td>
 	              <td th:text="${dep.email}"></td>
-	              <td th:text="${dep.website}"></td>
+	              <td th:text="${dep.officeAddress}"></td>
+	              <td th:text="${dep.officeNumber}"></td>
 	              </tr>
 	          </tbody>
 	        </table>
